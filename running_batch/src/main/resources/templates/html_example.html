@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>HTML Example</title>
+    </head>
+    <body>
+        This is body
+        <br/><br/>
+            <p>This is paragraph</p>
+        <br/><br/>
+            <p id="demo"></p>
+            <button type="button"
+                    onclick="document.getElementById('demo').innerHTML = Date()">
+                Click me
+            </button>
+        <br/><br/>
+            <p id="demo2"></p>
+            <script>
+                        var x;
+                        x = 8;
+                        document.getElementById("demo2").innerHTML = x
+            </script>
+            <button type="button"
+                    onclick="document.getElementById('demo2').innerHTML = 10">
+                Click me
+            </button>
+    </body>
+</html>
