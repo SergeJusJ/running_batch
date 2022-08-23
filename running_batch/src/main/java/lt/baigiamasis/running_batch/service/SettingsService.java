@@ -13,29 +13,43 @@ public class SettingsService {
 
     public Settings defaultUserProfileSettings() {
         return Settings.builder()
-                .groupList(Arrays.asList(customer(), reports(), members()))
+                //.groupList(Arrays.asList(batch(), reports(), members()))
+                .groupList(Arrays.asList(batch() ))
+
                 .build();
     }
 
-    private SettingsGroup customer() {
+    private SettingsGroup batch() {
         return SettingsGroup.builder()
-                .group("Customer")
+                .group("Select Batch running order:")
                 .settingList(Arrays.asList(Setting.builder()
-                                .label("Enable Notifications")
+                                .label("Archiving")
                                 .value(false)
                                 .build(),
                         Setting.builder()
-                                .label("Enable Case Tracking")
+                                .label("GDW_Schema_Export")
                                 .value(false)
                                 .build(),
                         Setting.builder()
-                                .label("Support")
+                                .label("Suspend_Backround_Processes")
                                 .value(false)
-                                .build()))
+                                .build(),
+                        Setting.builder()
+                                .label("Enable_Cash")
+                                .value(false)
+                                .build(),
+                        Setting.builder()
+                                .label("PURGE_CACHE")
+                                .value(false)
+                                .build()
+
+                        )
+
+                )
                 .build();
     }
 
-    private SettingsGroup reports() {
+  /*  private SettingsGroup reports() {
         return SettingsGroup.builder()
                 .group("Reports")
                 .settingList(Arrays.asList(Setting.builder()
@@ -69,5 +83,5 @@ public class SettingsService {
                                 .value(false)
                                 .build()))
                 .build();
-    }
+    }*/
 }
