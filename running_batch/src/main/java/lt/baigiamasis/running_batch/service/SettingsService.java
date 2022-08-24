@@ -21,26 +21,26 @@ public class SettingsService {
 
     private SettingsGroup batch() {
         return SettingsGroup.builder()
-                .group("Select Batch running order:")
+                //.group("Select Batch running order:")
                 .settingList(Arrays.asList(Setting.builder()
                                 .label("Archiving")
-                                .value(false)
+                                .value(true)
                                 .build(),
                         Setting.builder()
                                 .label("GDW_Schema_Export")
-                                .value(false)
+                                .value(true)
                                 .build(),
                         Setting.builder()
                                 .label("Suspend_Backround_Processes")
-                                .value(false)
+                                .value(true)
                                 .build(),
                         Setting.builder()
                                 .label("Enable_Cash")
-                                .value(false)
+                                .value(true)
                                 .build(),
                         Setting.builder()
                                 .label("PURGE_CACHE")
-                                .value(false)
+                                .value(true)
                                 .build()
 
                         )

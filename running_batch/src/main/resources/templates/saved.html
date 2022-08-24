@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Spring Boot Thymeleaf Application - Bootstrap Toggle</title>
+    <title>Batch Run</title>
 
     <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
 </head>
@@ -48,8 +48,11 @@
 
                 </th:block>
             </fieldset>
+           <!-- <button type="button" class="btn btn-primary active">Active Primary</button>-->
+            <!--<button type="button" class="btn btn-primary" disabled>Disabled Primary</button>-->
+            <a href="#" class="btn btn-primary disabled">Go Back</a>
 
-            <a th:href="@{/}" class="btn btn-primary">Go back</a>
+           <!--<a th:href="@{/}" class="btn btn-primary">Go Back</a>-->
         </div>
     </div>
 </div>
