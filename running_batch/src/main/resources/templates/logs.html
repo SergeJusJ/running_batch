@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Batch Run</title>
+
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+</head>
+<body>
+
+<!-- Navigation -->
+<div class="container">
+    <table class="table table-bordered" width="100%" id="dataTable" cellspacing="0">
+        <thead>
+        <tr>
+            <th>jobID</th>
+            <th>systemDate</th>
+            <th>startTime</th>
+            <th>endTime</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="each : ${logs}">
+            <td th:text="${each.jobID}"></td>
+            <td th:text="${each.systemDate}"></td>
+            <td th:text="${each.startTime}"></td>
+            <td th:text="${each.endTime}"></td>
+         <!--   <td><a href="">Update</a></td>
+            <td><a href="">Delete</a></td>-->
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+</body>
+</html>

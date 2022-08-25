@@ -25,12 +25,7 @@ public class Batch_exeRepoController {
 
     // http://localhost:8080/batch_exe/all
 
-    @GetMapping(path = "/all")
-    public @ResponseBody
-    Iterable<BatchExecution> getAllBatches (){
-        return batchService.getAllBatches();
 
-    }
     // http://localhost:8080/batch_exe/id/1
     @GetMapping (path = "/id/{id}")
     public @ResponseBody
@@ -44,10 +39,6 @@ public class Batch_exeRepoController {
         Optional<BatchExecution> batch = getBatch_exebyID(id);
         model.addAttribute("jobid","Job ID: " + batch);
         return "index";
-    }
-    @GetMapping("/jquerypage")
-    public String getJqueryPage(Model model){
-        return "jquerypage";
     }
 
 }

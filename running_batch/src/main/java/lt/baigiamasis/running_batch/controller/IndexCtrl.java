@@ -27,11 +27,11 @@ public class IndexCtrl {
     @Autowired
     private BatchService batchService;
     private Settings st;
+
     @GetMapping(path = "/all")
-    public @ResponseBody
-    Iterable<BatchExecution> getAllBatches() {
-//        return "Test succes!!!!!!";
-        return batchService.getAllBatches();
+    public String getAllBatches (Model model){
+        model.addAttribute("logs", batchService.getAllBatches());
+        return "logs";
     }
 
     @GetMapping
@@ -46,21 +46,24 @@ public class IndexCtrl {
         model.addAttribute("settings", settings);
         String label = "Archiving";
 
-        System.out.println((settings.getGroupList().get(0).getSettingList().stream().findFirst().get().getLabel()));
-        if (settings.getGroupList().get(0).getSettingList().stream().findFirst().get().isValue()) System.out.println("***********OK");
+        //System.out.println((settings.getGroupList().get(0).getSettingList().stream().findFirst().get().getLabel()));
+        if (settings.getGroupList().get(0).getSettingList().stream().findFirst().get().isValue())
+            System.out.println("***********OK");
 
-        List<Setting> settingsGroupList =  settings.getGroupList().get(0).getSettingList();
+        List<Setting> settingsGroupList = settings.getGroupList().get(0).getSettingList();
 //settingsGroupList.get(1).getLabel()
-        Iterator <Setting> iterator = settingsGroupList.iterator();
+        Iterator<Setting> iterator = settingsGroupList.iterator();
 
         while (iterator.hasNext()) {
             Setting setting = iterator.next();
-            if (setting.isValue()) System.out.println("****Job running :  " + setting.getLabel());
+            if (setting.isValue()) {
+                System.out.println("****Job running :  " + setting.getLabel());
+
+
+            }
 
 
         }
-
-
 
     return "saved";
     }
