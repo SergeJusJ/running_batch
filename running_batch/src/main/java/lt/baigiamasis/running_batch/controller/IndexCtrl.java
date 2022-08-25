@@ -2,16 +2,15 @@ package lt.baigiamasis.running_batch.controller;
 import lt.baigiamasis.running_batch.model.BatchExecution;
 import lt.baigiamasis.running_batch.model.Setting;
 import lt.baigiamasis.running_batch.model.Settings;
-import lt.baigiamasis.running_batch.model.SettingsGroup;
 import lt.baigiamasis.running_batch.service.BatchService;
 import lt.baigiamasis.running_batch.service.SettingsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DeferredImportSelector;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -49,8 +48,17 @@ public class IndexCtrl {
 
         System.out.println((settings.getGroupList().get(0).getSettingList().stream().findFirst().get().getLabel()));
         if (settings.getGroupList().get(0).getSettingList().stream().findFirst().get().isValue()) System.out.println("***********OK");
-   // while ()
 
+        List<Setting> settingsGroupList =  settings.getGroupList().get(0).getSettingList();
+//settingsGroupList.get(1).getLabel()
+        Iterator <Setting> iterator = settingsGroupList.iterator();
+
+        while (iterator.hasNext()) {
+            Setting setting = iterator.next();
+            if (setting.isValue()) System.out.println("****Job running :  " + setting.getLabel());
+
+
+        }
 
 
 
