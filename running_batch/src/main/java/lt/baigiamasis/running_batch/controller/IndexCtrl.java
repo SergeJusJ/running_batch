@@ -49,7 +49,7 @@ public class IndexCtrl {
 
         System.out.println((settings.getGroupList().get(0).getSettingList().stream().findFirst().get().getLabel()));
         if (settings.getGroupList().get(0).getSettingList().stream().findFirst().get().isValue()) System.out.println("***********OK");
-
+   // while ()
 
 
 
