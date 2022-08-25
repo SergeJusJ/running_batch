@@ -11,7 +11,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
     <div class="container">
-        <a class="navbar-brand" href="/"></a>
+        <a class="navbar-brand" href="/">Selected order:</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
                 aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <h2 class="mt-5 mb-4">Selected order:</h2>
+            <h2 class="mt-5 mb-4"></h2>
 
             <fieldset th:each="group, groupStat : ${settings.groupList}">
                 <h2 th:text="${group.group}">Group</h2>

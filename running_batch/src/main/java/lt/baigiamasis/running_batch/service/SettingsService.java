@@ -13,11 +13,10 @@ public class SettingsService {
 
     public Settings defaultUserProfileSettings() {
         return Settings.builder()
-                //.groupList(Arrays.asList(batch(), reports(), members()))
-                .groupList(Arrays.asList(batch() ))
-
+                .groupList(Arrays.asList(batch()))
                 .build();
     }
+
 
     private SettingsGroup batch() {
         return SettingsGroup.builder()
@@ -65,23 +64,7 @@ public class SettingsService {
                                 .value(false)
                                 .build()))
                 .build();
-    }
-
-    private SettingsGroup members() {
-        return SettingsGroup.builder()
-                .group("Members")
-                .settingList(Arrays.asList(Setting.builder()
-                                .label("Enable Member Sign Up")
-                                .value(false)
-                                .build(),
-                        Setting.builder()
-                                .label("Allow User Feedback")
-                                .value(false)
-                                .build(),
-                        Setting.builder()
-                                .label("Enable Customer Portal")
-                                .value(false)
-                                .build()))
-                .build();
     }*/
+
+
 }
