@@ -1,11 +1,10 @@
 package lt.baigiamasis.running_batch.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -18,10 +17,10 @@ public class BatchExecution {
     private Integer jobID;
 
     @Column (name = "SystemDate")
-    private Date systemDate;
+    private LocalTime systemDate;
 
     @Column (name = "StartTime")
-    private Date startTime;
+    private LocalTime startTime;
 
     @Column (name = "EndTime")
     private Date endTime;
@@ -32,6 +31,9 @@ public class BatchExecution {
     @Column (name = "ExitCode")
     private String exitCode;
 
+    @Column (name = "Batch_Name")
+    private String batch_name;
+
     public Integer getJobID() {
         return jobID;
     }
@@ -40,19 +42,19 @@ public class BatchExecution {
         this.jobID = jobID;
     }
 
-    public Date getSystemDate() {
-        return (Date) systemDate;
+    public LocalTime getSystemDate() {
+        return  systemDate;
     }
 
-    public void setSystemDate(Date systemDate) {
+    public void setSystemDate(LocalTime systemDate) {
         this.systemDate = systemDate;
     }
 
-    public Date getStartTime() {
+    public LocalTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
 
@@ -80,7 +82,16 @@ public class BatchExecution {
         this.exitCode = exitCode;
     }
 
-    /*@Override
+    public String getBatch_name() {
+        return batch_name;
+    }
+
+    public void setBatch_name(String batch_name) {
+        this.batch_name = batch_name;
+    }
+
+
+/*@Override
     public String toString() {
         return "ExitCode" + exitCode;
 

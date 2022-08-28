@@ -14,9 +14,15 @@ public class BatchService {
     public Optional<BatchExecution> getBatch_exebyID(int batchID) {
         return batch_exeRepo.findById(batchID);
     }
-    public Iterable<BatchExecution> getAllBatches(){
+
+    public Iterable<BatchExecution> getAllBatches() {
         return batch_exeRepo.findAll();
+    }
+
+    public BatchExecution create(BatchExecution batch) {
+        return batch_exeRepo.save(batch);
 
     }
+
 
 }
