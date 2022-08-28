@@ -65,10 +65,10 @@ public class IndexCtrl {
 
         BatchExecution tmpBatch = new BatchExecution();
 
-     maxValue = (int) StreamSupport.stream(batchService.getAllBatches().spliterator(), false).count();
+
 
        // tmpBatch.setJobID(batchService.getAllBatches());
-        BatchExecution newBatch = batchService.create(tmpBatch);
+       // BatchExecution newBatch = batchService.create(tmpBatch);
 
         while (iterator.hasNext()) {
             Setting setting = iterator.next();
@@ -76,12 +76,14 @@ public class IndexCtrl {
                 System.out.println("****Job running :  " + setting.getLabel());
             //TODO real batch here
 
+                maxValue = (int) StreamSupport.stream(batchService.getAllBatches().spliterator(), false).count();
 
 //tmpBatch.setSystemDate(LocalTime.now());
 //tmpBatch.setStartTime(LocalTime.now());
 
            tmpBatch.setBatch_name(setting.getLabel());
-          //  BatchExecution newBatch = batchService.create(tmpBatch);
+           tmpBatch.setJobID(maxValue+1);
+          BatchExecution newBatch = batchService.create(tmpBatch);
             //    BatchExecution newBatch = batchService.create(tmpBatch);
 
 
@@ -90,14 +92,6 @@ public class IndexCtrl {
 
     return "saved";
     }
-
-
-
-
-
-  /*  Iterable<BatchExecution> getAllBatches() {
-//        return "Test succes!!!!!!";
-        return batchService.getAllBatches();*/
 
 
 }
