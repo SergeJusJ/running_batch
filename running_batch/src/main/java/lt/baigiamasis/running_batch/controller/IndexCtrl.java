@@ -7,22 +7,15 @@ import lt.baigiamasis.running_batch.service.BatchService;
 import lt.baigiamasis.running_batch.service.SettingsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Collections;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-
-
+import java.util.stream.StreamSupport;
 
 
 @Controller
@@ -68,28 +61,31 @@ public class IndexCtrl {
 
         SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
 
-        //int maxValue = Collections.max(batchService.get);
-      // Collections.max();
+       int maxValue = 0;
+
+        BatchExecution tmpBatch = new BatchExecution();
+
+     maxValue = (int) StreamSupport.stream(batchService.getAllBatches().spliterator(), false).count();
+
+       // tmpBatch.setJobID(batchService.getAllBatches());
+        BatchExecution newBatch = batchService.create(tmpBatch);
 
         while (iterator.hasNext()) {
             Setting setting = iterator.next();
             if (setting.isValue()) {
                 System.out.println("****Job running :  " + setting.getLabel());
             //TODO real batch here
-                BatchExecution tmpBatch = new BatchExecution();
-//tmpBatch.setJobID();
+
+
 //tmpBatch.setSystemDate(LocalTime.now());
 //tmpBatch.setStartTime(LocalTime.now());
 
-           // tmpBatch.setBatch_name(setting.getLabel());
+           tmpBatch.setBatch_name(setting.getLabel());
           //  BatchExecution newBatch = batchService.create(tmpBatch);
-
-
+            //    BatchExecution newBatch = batchService.create(tmpBatch);
 
 
             }
-
-
         }
 
     return "saved";
