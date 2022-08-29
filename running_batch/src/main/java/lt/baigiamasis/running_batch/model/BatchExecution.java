@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -17,13 +16,13 @@ public class BatchExecution {
     private Integer jobID;
 
     @Column (name = "SystemDate")
-    private LocalTime systemDate;
+    private String systemDate;
 
     @Column (name = "StartTime")
-    private LocalTime startTime;
+    private String startTime;
 
     @Column (name = "EndTime")
-    private Date endTime;
+    private String endTime;
 
     @Column (name = "ExecutionTime")
     private Date executionTime;
@@ -42,27 +41,27 @@ public class BatchExecution {
         this.jobID = jobID;
     }
 
-    public LocalTime getSystemDate() {
+    public String getSystemDate() {
         return  systemDate;
     }
 
-    public void setSystemDate(LocalTime systemDate) {
+    public void setSystemDate(String systemDate) {
         this.systemDate = systemDate;
     }
 
-    public LocalTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 

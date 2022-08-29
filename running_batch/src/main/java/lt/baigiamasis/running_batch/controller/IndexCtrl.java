@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -58,40 +60,27 @@ public class IndexCtrl {
         List<Setting> settingsGroupList = settings.getGroupList().get(0).getSettingList();
 //settingsGroupList.get(1).getLabel()
         Iterator<Setting> iterator = settingsGroupList.iterator();
-
-        SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
-
-       int maxValue = 0;
-
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");
+        int maxValue = 0;
         BatchExecution tmpBatch = new BatchExecution();
-
-
-
-       // tmpBatch.setJobID(batchService.getAllBatches());
-       // BatchExecution newBatch = batchService.create(tmpBatch);
 
         while (iterator.hasNext()) {
             Setting setting = iterator.next();
             if (setting.isValue()) {
                 System.out.println("****Job running :  " + setting.getLabel());
-            //TODO real batch here
-
+                //TODO real batch here
                 maxValue = (int) StreamSupport.stream(batchService.getAllBatches().spliterator(), false).count();
 
-//tmpBatch.setSystemDate(LocalTime.now());
-//tmpBatch.setStartTime(LocalTime.now());
+                tmpBatch.setBatch_name(setting.getLabel());
+                tmpBatch.setJobID(maxValue + 1);
+                tmpBatch.setStartTime(String.valueOf(Timestamp.from(Instant.now())));
+                tmpBatch.setEndTime(String.valueOf(Timestamp.from(Instant.now())));
+                tmpBatch.setSystemDate("2022-08-29");
 
-           tmpBatch.setBatch_name(setting.getLabel());
-           tmpBatch.setJobID(maxValue+1);
-          BatchExecution newBatch = batchService.create(tmpBatch);
-            //    BatchExecution newBatch = batchService.create(tmpBatch);
-
-
+                BatchExecution newBatch = batchService.create(tmpBatch);
             }
         }
-
-    return "saved";
+        return "saved";
     }
-
 
 }
